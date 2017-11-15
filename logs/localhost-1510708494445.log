@@ -1,0 +1,94 @@
+app.ts:3 hello2:app running...
+app.ts:4 blockstack is [object Object]
+
+
+app.ts:16 blockstack.redirectToSignIn is function redirectToSignIn() {
+  var redirectURI = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window.location.origin + '/';
+  var manifestURI = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window.location.origin + '/manifest.json';
+  var scopes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _authConstants.DEFAULT_SCOPE;
+
+  var authRequest = (0, _index.makeAuthRequest)(generateAndStoreTransitKey(), redirectURI, manifestURI, scopes);
+  redirectToSignInWithAuthRequest(authRequest);
+}
+
+
+app.ts:17 blockstack.isUserSignedIn is function isUserSignedIn() {
+  return !!window.localStorage.getItem(_authConstants.BLOCKSTACK_STORAGE_LABEL);
+}
+
+
+app.ts:18 blockstack.loadUserData is function loadUserData() {
+  return JSON.parse(window.localStorage.getItem(_authConstants.BLOCKSTACK_STORAGE_LABEL));
+}
+
+
+app.ts:19 blockstack.isSignInPending is function isSignInPending() {
+  return !!getAuthResponseToken();
+}
+
+
+app.ts:20 blockstack.handlePendingSignIn is function handlePendingSignIn() {
+  var nameLookupURL = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'https://core.blockstack.org/v1/names/';
+
+  var authResponseToken = getAuthResponseToken();
+
+  return new Promise(function (resolve, reject) {
+    (0, _index.verifyAuthResponse)(authResponseToken, nameLookupURL).then(function (isValid) {
+      if (isValid) {
+        var tokenPayload = (0, _jsontokens.decodeToken)(authResponseToken).payload;
+        // TODO: real version handling
+        var appPrivateKey = tokenPayload.private_key;
+        var coreSessionToken = tokenPayload.core_token;
+        if (tokenPayload.version === '1.1.0') {
+          var transitKey = getTransitKey();
+          if (transitKey !== undefined && transitKey != null) {
+            if (appPrivateKey !== undefined && appPrivateKey !== null) {
+              appPrivateKey = (0, _authMessages.decryptPrivateKey)(transitKey, appPrivateKey);
+            }
+            if (coreSessionToken !== undefined && coreSessionToken !== null) {
+              coreSessionToken = (0, _authMessages.decryptPrivateKey)(transitKey, coreSessionToken);
+            }
+          }
+        }
+
+        var userData = {
+          username: tokenPayload.username,
+          profile: tokenPayload.profile,
+          appPrivateKey: appPrivateKey,
+          coreSessionToken: coreSessionToken,
+          authResponseToken: authResponseToken
+        };
+        var profileURL = tokenPayload.profile_url;
+        if ((userData.profile === null || userData.profile === undefined) && profileURL !== undefined && profileURL !== null) {
+          fetch(profileURL).then(function (response) {
+            if (!response.ok) {
+              // return blank profile if we fail to fetch
+              userData.profile = Object.assign({}, DEFAULT_PROFILE);
+              window.localStorage.setItem(_authConstants.BLOCKSTACK_STORAGE_LABEL, JSON.stringify(userData));
+              resolve(userData);
+            } else {
+              response.text().then(function (responseText) {
+                return JSON.parse(responseText);
+              }).then(function (wrappedProfile) {
+                return (0, _profiles.extractProfile)(wrappedProfile[0].token);
+              }).then(function (profile) {
+                userData.profile = profile;
+                window.localStorage.setItem(_authConstants.BLOCKSTACK_STORAGE_LABEL, JSON.stringify(userData));
+                resolve(userData);
+              });
+            }
+          });
+        } else {
+          userData.profile = tokenPayload.profile;
+          window.localStorage.setItem(_authConstants.BLOCKSTACK_STORAGE_LABEL, JSON.stringify(userData));
+          resolve(userData);
+        }
+      } else {
+        reject();
+      }
+    });
+  });
+}
+
+
+app.ts:24 DOM loaded...

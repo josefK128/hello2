@@ -1,0 +1,14 @@
+app.ts:3 hello2:app running...
+app.ts:4 blockstack is [object Object]
+app.ts:28 DOM loaded...
+blockstack.js:327 blockstack.js: generating v1.1.0 auth request
+app.ts:40 authRequest = eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NksifQ.eyJqdGkiOiIyODA5MGFhNC03MTY3LTQyMWUtYjIxYi03ZWMxYTJkMWI4NTIiLCJpYXQiOjE1MTA3MTE3MzQsImV4cCI6MTUxMDcxNTMzNCwiaXNzIjoiZGlkOmJ0Yy1hZGRyOjFCU3VuU2EyaEhiWjdHVU15bUNUNUR6NFdkWVpkWWlxNDYiLCJwdWJsaWNfa2V5cyI6WyIwMmVjZTE5OTZjOTllZDhkNjIzNDEyMWI1NDYwZDNiNWNlNDEyNTMwOGRlYjcwYTM5NGNlNzJiMmUzZTM5OWYzZWQiXSwiZG9tYWluX25hbWUiOiJodHRwOi8vbG9jYWxob3N0IiwibWFuaWZlc3RfdXJpIjoiaHR0cDovL2xvY2FsaG9zdC9tYW5pZmVzdC5qc29uIiwicmVkaXJlY3RfdXJpIjoiaHR0cDovL2xvY2FsaG9zdCIsInZlcnNpb24iOiIxLjEuMCIsImRvX25vdF9pbmNsdWRlX3Byb2ZpbGUiOnRydWUsInNjb3BlcyI6WyJzdG9yZV93cml0ZSJdfQ.QdDWcXyv_Y8YVA_U-GYGs1ySzAMnv28M0LhXn3z9RFbloTP8VsftzMAYLxN8IJtoMDHQHc345AsGVpBii4kOUg
+blockstack.js:651 {jti: "28090aa4-7167-421e-b21b-7ec1a2d1b852", iat: 1510711734, exp: 1510715334, iss: "did:btc-addr:1BSunSa2hHbZ7GUMymCT5Dz4WdYZdYiq46", public_keys: Array(1), …}do_not_include_profile: truedomain_name: "http://localhost"exp: 1510715334iat: 1510711734iss: "did:btc-addr:1BSunSa2hHbZ7GUMymCT5Dz4WdYZdYiq46"jti: "28090aa4-7167-421e-b21b-7ec1a2d1b852"manifest_uri: "http://localhost/manifest.json"public_keys: ["02ece1996c99ed8d6234121b5460d3b5ce4125308deb70a394ce72b2e3e399f3ed"]redirect_uri: "http://localhost"scopes: ["store_write"]version: "1.1.0"__proto__: Object
+blockstack.js:327 blockstack.js: generating v1.1.0 auth request
+blockstack.js:42517 openUriWithTimeoutHack
+app.ts:64 showProfile profile = [object Object]
+app.ts:67 person = [object Object]
+app.ts:69 person.avatarUrl() = null
+blockstack.js:385 blockstack.js: generating legacy auth response
+app.ts:48 authResponse = eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NksifQ.eyJqdGkiOiI4MmE4ZTc3Yi03YTVhLTRmOWMtYTY5Mi03MmJhOWFiY2UwZWIiLCJpYXQiOjE1MTA3MTE3MzQsImV4cCI6MTUxMzMwMzczNCwiaXNzIjoiZGlkOmJ0Yy1hZGRyOjFCU3VuU2EyaEhiWjdHVU15bUNUNUR6NFdkWVpkWWlxNDYiLCJwcml2YXRlX2tleSI6bnVsbCwicHVibGljX2tleXMiOlsiMDJlY2UxOTk2Yzk5ZWQ4ZDYyMzQxMjFiNTQ2MGQzYjVjZTQxMjUzMDhkZWI3MGEzOTRjZTcyYjJlM2UzOTlmM2VkIl0sInByb2ZpbGUiOnsibmFtZSI6Ik1hcmsgUnVkb2xwaCJ9LCJ1c2VybmFtZSI6Impvc2VmSzEyOCIsImNvcmVfdG9rZW4iOm51bGx9.usymjW1Xum9G3QLYnG8WB0Vf-7P0ZNpR-HUmyTOUnzDDXruczV-z7AyTdk9uqbRar432vfHh7daCoHh97n9UHA
+blockstack.js:95 protocol handler detected
