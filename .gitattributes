@@ -1,1 +1,10 @@
-* text eol=lf
+# text
+* text=auto
+
+# binary
+*.jpg binary
+*.png binary
+*.wav binary
+*.mp3 binary
+
+
